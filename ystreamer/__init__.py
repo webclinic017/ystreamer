@@ -53,4 +53,8 @@ class YahooStreamer:
     def add_ticker(self, ticker):
         self.ws.send(json.dumps({"subscribe": [ticker]}))
         self.tickers.append(ticker)
+
+    def remove_ticker(self, ticker):
+        self.ws.send(json.dumps({"unsubscribe": [ticker]}))
+        self.tickers.remove(ticker)
     
